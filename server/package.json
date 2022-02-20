@@ -4,7 +4,7 @@
   "description": "Backend of a MERN app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
   "author": "Pascal Sigl",
   "license": "MIT",
