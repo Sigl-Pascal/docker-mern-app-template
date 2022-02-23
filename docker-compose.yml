@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  client:
+    build: ./client/
+    stdin_open: true
+    volumes:
+      - ./client/:/usr/src/app/
+      - /usr/src/app/node_modules
+    networks:
+      - mern-app
+    ports:
+      - 3000:3000
+    depends_on:
+      - server
+
+  server:
+    build: ./server/
+    volumes:
+      - ./server/:/usr/src/app/
+      - /usr/src/app/node_modules
+    networks:
+      - mern-app
+    ports:
+      - 5000:5000
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    networks:
+      - mern-app
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - 27017:27017
+
+volumes:
+  mongo-data:
+      driver: local
+
+networks:
+  mern-app:
+      driver: bridge
