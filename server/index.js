@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
   res.send('Hello World');
-})
+});
 
 const db = 'mongodb://mongo:27017';
 mongoose.connect(db)
